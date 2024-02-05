@@ -12,6 +12,8 @@ interface DashboardPageProps {
   };
 }
 
+export const dynamic='force-dynamic';
+
 const DashBoardpage = ({ searchParams }: DashboardPageProps) => {
   const { organization } = useOrganization();
 
