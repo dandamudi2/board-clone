@@ -16,7 +16,6 @@ const font = Poppins({
   subsets: ["latin"],
   weight: ["600"],
 });
-export const dynamic = "force-dynamic";
 
 export const OrgSidebar = () => {
   const searchParams = useSearchParams();

@@ -5,6 +5,8 @@ import { ConvexClientProvider } from "@/providers/convex-client-provider";
 import { Loading } from "@/components/auth/loading";
 import { Suspense } from "react";
 
+import { Toaster } from "@/components/ui/sonner";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -21,7 +23,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Suspense fallback={<Loading />}>
-          <ConvexClientProvider>{children}</ConvexClientProvider>
+          <ConvexClientProvider>
+            <Toaster />
+            {children}
+          </ConvexClientProvider>
         </Suspense>
       </body>
     </html>
