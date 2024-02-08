@@ -17,6 +17,8 @@ import { useApiMutation } from "@/hooks/use-api-mutation";
 import { ConfirmModal } from "./confirm-modal";
 import { api } from "@/convex/_generated/api";
 import { Button } from "./ui/button";
+import { useRenameModal } from "@/store/use-rename-modal";
+import { PencilIcon } from "lucide-react";
 
 // import { useRenameModal } from "@/store/use-rename-modal";
 
@@ -36,6 +38,8 @@ export const Actions = ({
   title,
 }: ActionsProps) => {
   const { mutate, pending } = useApiMutation(api.board.remove);
+  const { onOpen } = useRenameModal();
+
   const OnCopyLink = () => {
     navigator.clipboard
       .writeText(`${window.location.origin}/board/${id}`)
@@ -87,8 +91,13 @@ export const Actions = ({
               Delete
             </Button>
           </ConfirmModal>
-          <DropdownMenuItem className="p-3 cursor-pointer">
-            <Edit className="h-4 w-4 mr-2" />
+          <DropdownMenuItem
+            onClick={() => {
+              onOpen(id, title);
+            }}
+            className="p-3 cursor-pointer"
+          >
+            <PencilIcon className="h-4 w-4 mr-2" />
             Rename
           </DropdownMenuItem>
         </DropdownMenuContent>
